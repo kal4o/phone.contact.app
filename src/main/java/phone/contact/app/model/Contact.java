@@ -1,18 +1,39 @@
 package phone.contact.app.model;
 
+import org.hibernate.annotations.Where;
 import org.hibernate.usertype.UserType;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "contacts")
+@Where(clause = "is_deleted = false")
 public class Contact {
 
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name ="id")
+    public Integer id;
 
-    private String firstName;
+    @Column(name = "first_name")
+    @NotEmpty
+    public String firstName;
 
-    private String lastName;
+    @Column(name = "last_name")
+    @NotEmpty
+    public String lastName;
 
+    @Column(name = "type")
+    @NotNull
     public UserType contactType;
 
-    private String contactNumber;
+    @Column(name = "contact_number")
+    public String contactNumber;
+
+    @Column(name = "isDeleted")
+    private boolean isDeleted = false;
 
     public Integer getId() {
         return id;
@@ -42,11 +63,19 @@ public class Contact {
         return contactType;
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
     public void setContactType(UserType contactType) {
         this.contactType = contactType;
-    }
 }
+
