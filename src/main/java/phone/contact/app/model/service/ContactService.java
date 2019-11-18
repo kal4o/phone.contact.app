@@ -26,9 +26,7 @@ public class ContactService {
         updateContact(contact);
     }
 
-    public Contact getContact(Integer contactId) {
-
-    }
+    public Contact getContact(Integer contactId)
 
 
 

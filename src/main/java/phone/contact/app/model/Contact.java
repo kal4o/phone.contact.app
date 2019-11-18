@@ -6,6 +6,8 @@ import org.hibernate.usertype.UserType;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "contacts")
@@ -29,8 +31,8 @@ public class Contact {
     @NotNull
     public UserType contactType;
 
-    @Column(name = "contact_number")
-    public String contactNumber;
+    @OneToMany(mappedBy = "numbers", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    private List<PhoneNumber> myNumbers = new ArrayList<>();
 
     @Column(name = "isDeleted")
     private boolean isDeleted = false;
