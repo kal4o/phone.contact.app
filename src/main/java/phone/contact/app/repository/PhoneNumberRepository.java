@@ -13,10 +13,10 @@ import java.util.List;
 @Repository
 public interface PhoneNumberRepository extends CrudRepository<PhoneNumber, Integer> {
 
-    @Query("SELECT p FROM numbers p WHERE p.phone_number=:phoneNumber")
+    @Query("SELECT p FROM PhoneNumber p WHERE phoneNumber=:phoneNumber")
     public List<PhoneNumber> findByNumber(@Param("phoneNumber")PhoneNumber phoneNumber);
 
-    @Query("SELECT p FROM numbers p WHERE p.contact_type=:contactType")
+    @Query("SELECT p FROM PhoneNumber p WHERE contactType=:contactType")
     public List<PhoneNumber> findByType(@Param("contactType")ContactType contactType);
 
     @Query("UPDATE PhoneNumber SET isDeleted = true WHERE id = :id")

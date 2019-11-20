@@ -30,7 +30,7 @@ public class Contact {
     @Column(name = "isDeleted")
     private boolean isDeleted = false;
 
-    @OneToMany(mappedBy = "contactId", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "contact", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<PhoneNumber> myPhoneNumbers = new ArrayList<>();
 
 

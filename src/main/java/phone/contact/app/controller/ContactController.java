@@ -20,7 +20,7 @@ public class ContactController {
     }
 
     @GetMapping("/{contactId}")
-    public Contact getContact(@PathVariable("contactid") Integer contactId) {
+    public Contact getContact(@PathVariable("contactId") Integer contactId) {
         return contactService.getContact(contactId);
     }
 

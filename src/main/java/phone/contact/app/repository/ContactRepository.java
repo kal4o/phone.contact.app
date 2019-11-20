@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ContactRepository extends CrudRepository<Contact, Integer> {
 
-    @Query("SELECT c FROM contacts c WHERE c.first_name LIKE firstName")
+    @Query("SELECT c FROM Contact c WHERE firstName = :firstName")
     public List<Contact> findByFirstName(@Param("firstName")Contact firstName);
 
     @Query("Update Contact SET isDeleted = true WHERE id = :id")
