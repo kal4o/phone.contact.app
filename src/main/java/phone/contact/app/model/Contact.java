@@ -16,7 +16,7 @@ public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="id")
+    @Column(name = "id")
     public Integer id;
 
     @Column(name = "first_name")
@@ -27,15 +27,12 @@ public class Contact {
     @NotEmpty
     public String lastName;
 
-    @Column(name = "type")
-    @NotNull
-    public UserType contactType;
-
-    @OneToMany(mappedBy = "numbers", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    private List<PhoneNumber> myNumbers = new ArrayList<>();
-
     @Column(name = "isDeleted")
     private boolean isDeleted = false;
+
+    @OneToMany(mappedBy = "contactId", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    private List<PhoneNumber> myPhoneNumbers = new ArrayList<>();
+
 
     public Integer getId() {
         return id;
@@ -61,8 +58,12 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public UserType getContactType() {
-        return contactType;
+    public List<PhoneNumber> getMyPhoneNumbers() {
+        return myPhoneNumbers;
+    }
+
+    public void setMyPhoneNumbers(List<PhoneNumber> myPhoneNumbers) {
+        this.myPhoneNumbers = myPhoneNumbers;
     }
 
     public boolean isDeleted() {
@@ -72,12 +73,5 @@ public class Contact {
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public void setContactType(UserType contactType) {
-        this.contactType = contactType;
 }
 

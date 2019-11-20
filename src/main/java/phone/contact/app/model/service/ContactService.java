@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import phone.contact.app.model.Contact;
 import phone.contact.app.model.repository.ContactRepository;
 
+import java.util.Optional;
+
 @Service
 public class ContactService {
     private final ContactRepository contactRepository;
@@ -14,9 +16,7 @@ public class ContactService {
         this.contactRepository = contactRepository;
     }
 
-    public Contact getContact(Integer contactId) {
-        return null;
-    }
+
 
     public void createOrUpdateContact(Contact contact) {
         if(null==contact.getId()) {
@@ -26,9 +26,23 @@ public class ContactService {
         updateContact(contact);
     }
 
-    public Contact getContact(Integer contactId)
 
+    public Contact getContact(Integer contactId) {
+        Optional<Contact> contact = contactRepository.findById(contactId);
+        if(contact.isPresent()) {
+            throw new RuntimeException("Contact not found!");
+        }
 
+        return contact.get();
+    }
+
+    private void updateContact(Contact contact) {
+        contactRepository.save(contact);
+    }
+
+    private void createContact(Contact contact) {
+        contactRepository.save(contact);
+    }
 
 
 
