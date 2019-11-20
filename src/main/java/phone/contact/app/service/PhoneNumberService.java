@@ -1,9 +1,9 @@
-package phone.contact.app.model.service;
+package phone.contact.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import phone.contact.app.model.PhoneNumber;
-import phone.contact.app.model.repository.PhoneNumberRepository;
+import phone.contact.app.repository.PhoneNumberRepository;
 
 import java.util.Optional;
 
