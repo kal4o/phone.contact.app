@@ -1,6 +1,7 @@
 package phone.contact.app.repository;
 
 import org.hibernate.sql.Update;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +21,7 @@ public interface PhoneNumberRepository extends CrudRepository<PhoneNumber, Integ
     public List<PhoneNumber> findByType(@Param("contactType")ContactType contactType);
 
     @Query("UPDATE PhoneNumber SET isDeleted = true WHERE id = :id")
+    @Modifying
     public void deactivatePhoneNumber(@Param("id") Integer id);
 }
 
