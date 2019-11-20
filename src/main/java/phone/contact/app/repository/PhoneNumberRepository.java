@@ -1,4 +1,4 @@
-package phone.contact.app.model.repository;
+package phone.contact.app.repository;
 
 import org.hibernate.sql.Update;
 import org.springframework.data.jpa.repository.Query;

@@ -1,4 +1,4 @@
-package phone.contact.app.model.repository;
+package phone.contact.app.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,5 +13,8 @@ public interface ContactRepository extends CrudRepository<Contact, Integer> {
 
     @Query("SELECT c FROM contacts c WHERE c.first_name LIKE firstName")
     public List<Contact> findByFirstName(@Param("firstName")Contact firstName);
-    
+
+    @Query("Update Contact SET isDeleted = true WHERE id = :id")
+    public void deactivateContact(@Param("id") Integer id);
+
 }

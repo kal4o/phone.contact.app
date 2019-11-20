@@ -19,7 +19,7 @@ public class PhoneNumber {
 
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "contact_id")
-    public Contact contactId;
+    public Contact contact;
 
     @Column(name = "phone_number")
     @NotEmpty
@@ -45,12 +45,12 @@ public class PhoneNumber {
         this.contactType = contactType;
     }
 
-    public Contact getContactId() {
-        return contactId;
+    public Contact getContact() {
+        return contact;
     }
 
-    public void setContactId(Contact contactId) {
-        this.contactId = contactId;
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public String getPhoneNumber() {

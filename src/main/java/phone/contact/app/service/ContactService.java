@@ -1,9 +1,10 @@
-package phone.contact.app.model.service;
+package phone.contact.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import phone.contact.app.model.Contact;
-import phone.contact.app.model.repository.ContactRepository;
+
+import phone.contact.app.repository.ContactRepository;
 
 import java.util.Optional;
 
@@ -44,6 +45,9 @@ public class ContactService {
         contactRepository.save(contact);
     }
 
-
+    public void deleteContact(Integer contactId) {
+        // customerRepository.deleteById(customerId);  //nikoga ne triem!!
+        contactRepository.deactivateContact(contactId);
+    }
 
 }
