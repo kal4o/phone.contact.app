@@ -1,5 +1,6 @@
 package phone.contact.app.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import phone.contact.app.model.Contact;
 import phone.contact.app.service.ContactService;
@@ -10,6 +11,7 @@ public class ContactController {
 
     private final ContactService contactService;
 
+    @Autowired
     public ContactController(ContactService contactService) {
         this.contactService = contactService;
     }
